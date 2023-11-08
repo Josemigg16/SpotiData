@@ -8,4 +8,6 @@ app.get('/', (req, res) => {
     res.sendFile('public/index.html', { root: fileURLToPath(import.meta.url).replace('app.js', '') })
 })
 
+app.get('/Login', Login)
+
 export default app
