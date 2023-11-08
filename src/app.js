@@ -1,7 +1,7 @@
 import express from 'express'
 import morgan from 'morgan'
 import { fileURLToPath } from 'url'
-import { Login } from './routes/auth.routes.js'
+import { Login, callback } from './routes/auth.routes.js'
 
 const app = express()
 app.use(morgan('dev'))
@@ -10,5 +10,6 @@ app.get('/', (req, res) => {
 })
 
 app.get('/login', Login)
+app.get('/callback', callback)
 
 export default app
