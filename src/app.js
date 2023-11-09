@@ -5,17 +5,23 @@ import { fileURLToPath } from 'url'
 import { Login, callback } from './routes/auth.routes.js'
 
 const app = express()
-app.use(morgan('dev'))
-app.get('/', (req, res) => {
-    res.sendFile('public/index.html', { root: fileURLToPath(import.meta.url).replace('app.js', '') })
-})
+
 app.use(session({
     secret: 'yolavienuntaxi',
     resave: false,
     saveUninitialized: true
   }));
 
+app.use(morgan('dev'))
+app.get('/', (req, res) => {
+    if(!req.session.token) {
+        return res.redirect('/login');
+    }
+    res.sendFile('public/index.html', { root: fileURLToPath(import.meta.url).replace('app.js', '') })
+})
+
 app.get('/login', Login)
+
 app.get('/callback', callback)
 
 
