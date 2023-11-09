@@ -29,10 +29,9 @@ export const callback = (req, res) => {
         
         console.log('access_token:', access_token);
         console.log('refresh_token:', refresh_token);
+        
+        req.session.token = access_token;
 
-        req.session.token = access_token; 
-        console.log("KLKLKLKLKLKLKLKLKLKLKLKLKKLLK")
-        console.log(`${req.session.token}`);
         console.log(
           `Sucessfully retreived access token. Expires in ${expires_in} s.`
         );
