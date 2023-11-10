@@ -28,6 +28,10 @@ app.get('/', (req, res) => {
     return res.render('index')
 })
 
+app.get('/api/session', (req, res) => {
+    res.json(req.session);
+  });
+
 app.get('/login', Login)
 
 app.get('/callback', callback)
