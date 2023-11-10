@@ -6,8 +6,6 @@ import { Login, callback } from './routes/auth.routes.js'
 const app = express()
 
 app.set('view engine', 'ejs');
-
-
 app.use(session({
     secret: 'yolavienuntaxi',
     resave: false,
