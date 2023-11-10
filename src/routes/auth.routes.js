@@ -1,4 +1,3 @@
-import jwt from 'jsonwebtoken'
 import { spotifyApi, scopes } from '../config.js'
 import { CLIENT_ID, SECRET_CLIENT } from '../vars.js';
 import session from 'express-session';
