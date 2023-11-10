@@ -1,11 +1,18 @@
+// app.js
+import path from 'path';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 import express from 'express'
 import session from 'express-session';
 import morgan from 'morgan'
+
 import { Login, callback } from './routes/auth.routes.js'
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express()
-
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/views'));
+
 app.use(session({
     secret: 'yolavienuntaxi',
     resave: false,
@@ -15,7 +22,6 @@ app.use(session({
 app.use(morgan('dev'))
 app.get('/', (req, res) => {
     if(!req.session.token) {
-        //res.sendFile('public/index.html', { root: fileURLToPath(import.meta.url).replace('app.js', '') })
         return res.render('login')
     }
     
