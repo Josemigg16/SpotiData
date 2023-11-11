@@ -16,16 +16,22 @@ app.use(session({
     saveUninitialized: true
   }));
 
-app.use(express.static(path.resolve('./src/public')));
-const publicPath  = path.resolve('./src/public');
+app.use(express.static(path.resolve('./src/public/')));
+const htmlPath  = path.resolve('./src/public/html');
 
 app.use(morgan('dev'))
 app.get('/', (req, res) => {
-    if(!req.session.token) {
-        return res.sendFile('login.html', { root: publicPath})
-    }
-    
-    return res.sendFile('index.html', { root: publicPath})
+
+  if(!req.session.token) {
+    return res.sendFile('login.html', { root: htmlPath});
+  }
+  return res.sendFile('index.html', { root: htmlPath});
+
+});
+
+app.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
 })
 
 app.get('/api/session', (req, res) => {
