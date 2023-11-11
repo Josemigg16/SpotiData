@@ -1,3 +1,5 @@
+export const a = "hiiiii"
+
 fetch('/api/session')
   .then(res => res.json())
   .then(session => {

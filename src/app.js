@@ -7,11 +7,8 @@ import session from 'express-session';
 import morgan from 'morgan'
 
 import { Login, callback } from './routes/auth.routes.js'
-
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express()
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '/views'));
 
 app.use(session({
     secret: 'yolavienuntaxi',
@@ -19,13 +16,16 @@ app.use(session({
     saveUninitialized: true
   }));
 
+app.use(express.static(path.resolve('./src/public')));
+const publicPath  = path.resolve('./src/public');
+
 app.use(morgan('dev'))
 app.get('/', (req, res) => {
     if(!req.session.token) {
-        return res.render('login')
+        return res.sendFile('login.html', { root: publicPath})
     }
     
-    return res.render('index')
+    return res.sendFile('index.html', { root: publicPath})
 })
 
 app.get('/api/session', (req, res) => {
