@@ -1,13 +1,10 @@
 // app.js
 import path from 'path';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
 import express from 'express'
 import session from 'express-session';
 import morgan from 'morgan'
 
 import { Login, callback } from './routes/auth.routes.js'
-const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express()
 
 app.use(session({
