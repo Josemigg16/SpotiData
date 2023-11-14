@@ -28,4 +28,8 @@ async function getSession() {
 
 }
 
-main()
+document.getElementById("send").addEventListener("click", (e) => {
+  main();
+
+  e.preventDefault();
+});

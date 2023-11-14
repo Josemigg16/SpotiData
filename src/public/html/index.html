@@ -1,20 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="./styles/styles.css">
-    <title>hello world</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="">
+  <link rel="stylesheet" href="./styles/styles.css">
+  <title>SpotiData</title>
 </head>
+
 <body>
-    <h1>Hello world</h1>
+  <h1>SPOTIDATA</h1>
+  <div id="container">
+    <h1 id="username"></h1>
+    <div id="formulario">
+      <form method="POST" action="/check">
+        <input type="radio" id="topArtists" name="topMusic" value="artists" checked="checked" />
+        <label for="topArtists">Top Artists</label><br />
+        <input type="radio" id="topSongs" name="topMusic" value="tracks" />
+        <label for="topSongs">Top Songs</label><br />
+
+        <label for="time">Time</label>
+        <select name="time" id="time">
+          <option value="short_term" selected>Last 4 weeks</option>
+          <option value="medium_term">Last 6 months</option>
+          <option value="long_term">All time</option>
+        </select>
+        <br />
+        <button id="send" type="button">Show</button>
+      </form>
+    </div>
+
+    <div id="results">
+    </div>
     <div id="logoutForm">
-        <form action="./logout">
-          <button class="logoutBtn logoutText">Logout</button>
-        </form>
-      </div>
-      </div>
-    <script type="module" src="./scripts/index.js"></script>
+      <form action="./logout">
+        <button class="logoutBtn logoutText">Logout</button>
+      </form>
+    </div>
+  </div>
+  <script type="module" src="./scripts/index.js"></script>
 </body>
+
 </html>

@@ -4,7 +4,7 @@ import express from 'express'
 import session from 'express-session';
 import morgan from 'morgan'
 
-import { Login, callback } from './routes/auth.routes.js'
+import { Login, callback, checkToken } from './routes/auth.routes.js'
 const app = express()
 
 app.use(session({
@@ -36,6 +36,8 @@ app.get('/api/session', (req, res) => {
   });
 
 app.get('/login', Login)
+
+app.get('/check', checkToken)
 
 app.get('/callback', callback)
 
