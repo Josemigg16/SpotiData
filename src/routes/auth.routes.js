@@ -50,10 +50,3 @@ export const callback = (req, res) => {
       res.send(`Error getting Tokens: ${error}`);
     });
 };
-
-export const checkToken = (req, res) => {
-  if (req.session.token) {
-    return res.redirect("/");
-  }
-  return res.redirect("/login");
-};

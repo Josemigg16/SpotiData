@@ -21,6 +21,7 @@ export class Spotify {
 
       return await res.json();
     } catch (error) {
+      window.location.href = '/login';
       console.log("Error durante la solicitud:", error.message);
     }
   }
