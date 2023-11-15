@@ -1,7 +1,9 @@
 import { spotifyApi, scopes } from "../config.js";
+import { CLIENT_ID, SECRET_CLIENT } from "../vars.js";
+import session from "express-session";
 
 export const Login = (req, res) => {
-  res.redirect(spotifyApi.createAuthorizeURL(scopes));s
+  res.redirect(spotifyApi.createAuthorizeURL(scopes));
 };
 
 export const callback = (req, res) => {
